@@ -9,7 +9,6 @@ categories: ["学习记录"]
 math: false
 license: false
 comments: true
-lastmod: 2024-07-13T22:42:35+08:00
 draft: false
 ---
 
@@ -100,9 +99,8 @@ clientSocket.close()
 
 - UDP报文段
 
-<img src="https://img-blog.csdnimg.cn/img_convert/e65156671830d21277b08081633d2f96.png">
+![UDP报文段结构](https://raw.githubusercontent.com/yjwang01/img_bed/main/img/202407141801936.png)
 
-![UDP报文段结构](https://img-blog.csdnimg.cn/img_convert/e65156671830d21277b08081633d2f96.png)
 
 ### 面向连接的传输 TCP
 
@@ -113,5 +111,4 @@ clientSocket.close()
 ## 数据链路层
 
 ## 物理层
-
 

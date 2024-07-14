@@ -10,6 +10,5 @@ math: false
 license: false
 # hidden: false
 comments: true
-lastmod: {{ .Date }}
 draft: true
 ---

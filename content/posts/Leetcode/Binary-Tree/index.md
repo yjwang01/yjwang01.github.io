@@ -10,7 +10,6 @@ math: false
 license: false
 # hidden: false
 comments: true
-lastmod: 2024-07-14T13:53:35+08:00
 draft: false
 ---
 
