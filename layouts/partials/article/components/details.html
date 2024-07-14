@@ -37,6 +37,20 @@
             </div>
         {{ end }}
 
+        <!-- Last Updated Date -->
+        {{- $pubdate := .PublishDate.Format "Jan 02, 2006" }}
+        {{- if .Lastmod }}
+            <div>
+                {{- $lastmod := .Lastmod.Format "Jan 02, 2006" }}
+                {{- if ne $lastmod $pubdate }}
+                    {{ partial "helper/icon" "calendar-check" }}
+                    <time class="article-time--published">
+                        {{ $lastmod }}
+                    </time>
+                {{- end }}
+            </div>
+        {{- end }}
+
         {{ if $showReadingTime }}
             <div>
                 {{ partial "helper/icon" "clock" }}
