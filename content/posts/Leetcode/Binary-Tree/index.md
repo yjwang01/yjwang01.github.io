@@ -13,7 +13,7 @@ comments: true
 draft: false
 ---
 
-## 将有序数组转换为平衡二叉搜索树[![Link](link.svg)](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/?envType=study-plan-v2&envId=top-100-liked)
+## 将有序数组转换为平衡二叉搜索树[![Link](/icons/link.svg)](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/?envType=study-plan-v2&envId=top-100-liked)
 
 - **二叉搜索树**：左子树的值都比头节点小，右子树的值都比头节点大
 - **平衡**：所有节点的左右子树的深度相差不超过1
@@ -48,7 +48,7 @@ public:
 };
 ```
 
-## 验证二叉搜索树 [![Link](link.svg)](https://leetcode.cn/problems/validate-binary-search-tree/description/?envType=study-plan-v2&envId=top-100-liked)
+## 验证二叉搜索树 [![Link](/icons/link.svg)](https://leetcode.cn/problems/validate-binary-search-tree/description/?envType=study-plan-v2&envId=top-100-liked)
 
 根据二叉搜索树的性质，可采用中序遍历二叉树的方式，每一次遍历得到的值比上一次大，
 即可判定该二叉树为一个二叉搜索树。

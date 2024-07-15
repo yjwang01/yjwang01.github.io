@@ -101,9 +101,21 @@ clientSocket.close()
 
 ![UDP报文段结构](https://raw.githubusercontent.com/yjwang01/img_bed/main/img/202407141801936.png)
 
+> **长度(16bit)**: 以字节为单位
+> 
+> **校验和(16bit)**：虽然很多链路层协议都提供了差错检测，但是只有**端到端**实现的差错检测才能保证（端到端原则）；无法实现差错恢复
+
+
+### 可靠数据传输原理
+
+- 自动重传请求ARQ(Automatic Repeat reQuest)
+
+
 
 ### 面向连接的传输 TCP
 
+- 在不可靠的IP端到端网络层上实现可靠数据传输协议(reliable data transfer protocol)
+- 
 
 
 ## 网络层
