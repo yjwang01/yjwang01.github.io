@@ -91,3 +91,77 @@ public:
 - Leetcode中不同的测试用例将共享静态变量，
 因此如果上述代码中将`long long val`定义为`static`变量，则会出错
 
+
+----
+
+
+## 二叉搜索树中第K小的元素[![](icons/link.svg)](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/description/?envType=study-plan-v2&envId=top-100-liked)
+
+- 中序遍历
+
+根据二叉搜索树的性质，中序遍历的结果将会是一个有=由小到大的排列。
+当采用递归法进行中序遍历时，可通过返回值的特性进行剪枝，不至于遍历整颗树。
+
+```cpp
+class Solution
+{
+public:
+    int cnt = 0;
+    int dfs(TreeNode *head, int k)
+    {
+        if (head->left != nullptr)
+        {
+            int temp = dfs(head->left, k);
+            if (temp != -1) return temp;
+        }
+
+        cnt++;
+        if (cnt == k) return head->val;   // val >= 0
+
+        if (head->right != nullptr)
+        {
+            int temp = dfs(head->right, k);
+            if (temp != -1) return temp;
+        }
+
+        return -1;
+    }
+
+    int kthSmallest(TreeNode *root, int k)
+    {
+        return dfs(root, k);
+    }
+};
+```
+
+> **时间复杂度**：$O(H+k)$，需要$O(H)$到达叶子节点，再需要$O(k)$搜索第k个节点
+>
+> **空间复杂度**：$O(H)$，递归栈空间为树的高度
+
+- 在题解中采用了迭代法的方式来模拟递归调用的过程，可参考学习，更适合递归中途需要返回的方式
+
+```cpp
+class Solution {
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        stack<TreeNode *> stack;
+        while (root != nullptr || stack.size() > 0) {
+            while (root != nullptr) {
+                stack.push(root);
+                root = root->left;
+            }
+            root = stack.top();
+            stack.pop();
+            --k;
+            if (k == 0) {
+                break;
+            }
+            root = root->right;
+        }
+        return root->val;
+    }
+};
+```
+
+------ 
+

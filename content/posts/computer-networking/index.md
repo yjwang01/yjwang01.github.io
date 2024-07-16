@@ -197,6 +197,21 @@ e.g.:
 
 在不可靠的IP端到端网络层上实现可靠数据传输协议(reliable data transfer protocol) 
 
+- 全双工服务
+- 点对点
+
+- TCP报文段结构
+  - 序号：以字节为单位，每次TCP连接建立将选择一个初始的序号
+  - 确认号：以字节为单位
+  - 接收窗口：用于流量控制，以字节为单位
+  - 首部长度(Header Length)：以字为单位的TCP首部长度
+  - RST、SYN、FIN：用于连接建立和拆除
+  - ACK：指示确认号的值有效
+
+<div align=center>
+  <img src="https://raw.githubusercontent.com/yjwang01/img_bed/main/img/202407160008486.png" title="TCP报文段结构"/>
+</div>
+
 
 ## 网络层
 
