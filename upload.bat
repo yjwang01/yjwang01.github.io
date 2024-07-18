@@ -4,7 +4,8 @@ rd /S /q public
 rd /S /q resources
 
 git add .
-set /p var= "Please input commit message: "
+@REM set /p var= "Please input commit message: "
 
-git commit -m "%var%"
+@REM git commit -m "%var%"
+git commit
 git push origin master

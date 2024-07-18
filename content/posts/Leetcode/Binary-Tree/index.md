@@ -95,7 +95,7 @@ public:
 ----
 
 
-## 二叉搜索树中第K小的元素[![](icons/link.svg)](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/description/?envType=study-plan-v2&envId=top-100-liked)
+## 二叉搜索树中第K小的元素[![](/icons/link.svg)](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/description/?envType=study-plan-v2&envId=top-100-liked)
 
 - 中序遍历
 
@@ -165,3 +165,88 @@ public:
 
 ------ 
 
+## 二叉树展开为链表[![Link](/icons/link.svg)](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/description/?envType=study-plan-v2&envId=top-100-liked)
+
+对于本题，最直接的想法就是通过前序遍历的方式转换为链表。
+但是在遍历的过程中将节点展开成链表会破坏二叉树的结构。
+
+使用递归的方式，问题可分解为展开左子树，展开右子树，
+将展开后的右子树连接到展开的左子树后面。
+
+在展开左子树的时候，记录每次展开后该链表的最后一个非空节点`temp`，
+再将右子树的节点连接到`temp`。
+
+```cpp
+class Solution {
+public:
+    // 返回值为链表的末尾非空节点
+    TreeNode* PreOrder(TreeNode* head)
+    {
+        TreeNode *r = head->right;
+        TreeNode *l = head->left;
+        TreeNode *temp = head;  // 指向最后一个非空节点
+        temp->left = nullptr;
+
+        if (l != nullptr)
+        {
+            temp->right = l;
+            temp = PreOrder(l);
+        }
+        if (r != nullptr)
+        {
+            temp->right = r;
+            temp = PreOrder(r);
+        }
+        return temp;
+    }
+
+    void flatten(TreeNode* root) {
+        if (root == nullptr)     return;
+        PreOrder(root);
+    }
+};
+```
+
+## 二叉树中的最大路径和[![Link](/icons/link.svg)](https://leetcode.cn/problems/binary-tree-maximum-path-sum/description/?envType=study-plan-v2&envId=top-100-liked)
+
+本题中，对于一个头节点`head`，其相关路径有如下几种：
+
+1. `head`
+2. `head` + 左子树最大值路径
+3. `head` + 右子树最大值路径
+4. `head` + 左子树最大值路径 + 右子树最大值路径
+
+其中左右子树最大值路径都应当是单链的。
+
+显然，将问题分解为求解左右子树最大值，
+然后计算上述4种情况的最大值，即可得到通过`head`路径的最大值，
+返回以`head`作为子树时的最大值，即上述前3种情况的最大值。
+
+```cpp
+class Solution {
+public:
+    int max_sum;
+    int dfs_sum(TreeNode *head)
+    {
+        // 当节点为空时，返回0，不影响其他节点的求和
+        if (head == nullptr)    return 0;
+
+        int l = dfs_sum(head->left);
+        int r = dfs_sum(head->right);
+
+        // head作为最顶端节点的所有路径最大和
+        // 左子树+head，右子树+head，左子树+右子树+head，head
+        max_sum = max({max_sum, l + head->val, 
+            r + head->val, head->val, l + r + head->val});
+        
+        // head作为顶端节点的的单侧最大路径和
+        return max({l, r, 0}) + head->val; 
+    }
+
+    int maxPathSum(TreeNode* root) {
+        max_sum = root->val;
+        dfs_sum(root);
+        return max_sum;
+    }
+};
+```
