@@ -1,6 +1,6 @@
 ---
 title: "Graph Theory"
-description: Leetcode 关于图论相关题目记录
+description: Leetcode 图论相关题目记录
 date: 2024-07-15T09:56:22+08:00
 slug: 'leetcode_graph_theory'
 tags: ['Leetcode','Graph Theory']

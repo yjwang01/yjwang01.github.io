@@ -1,6 +1,6 @@
 ---
 title: "Back Track"
-description: Leetcode 关于回溯相关题目记录
+description: Leetcode 回溯相关题目记录
 date: 2024-07-15T17:32:01+08:00
 slug: 'leetcode-back-track'
 tags: ['Leetcode', 'BackTrack']

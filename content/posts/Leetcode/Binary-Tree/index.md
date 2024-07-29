@@ -1,6 +1,6 @@
 ---
 title: "Binary Tree"
-description: Leetcode关于二叉树相关题目记录
+description: Leetcode 二叉树相关题目记录
 date: 2024-07-14T12:15:35+08:00
 slug: 'leetcode_binary_tree'
 tags: ['Leetcode', 'Binary Tree']
