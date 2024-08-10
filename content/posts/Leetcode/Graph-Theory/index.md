@@ -172,4 +172,152 @@ public:
 
 ------
 
+## 前缀树[![](/icons/link.svg)](https://leetcode.cn/problems/implement-trie-prefix-tree/description/?envType=study-plan-v2&envId=top-100-liked)
+
+
+**前缀树**是一种树形的数据结构，可以用于自动补全和拼写检查。
+
+在**前缀树**中，每个单词的以字母形式存储在一个节点中，
+具有相同前缀的单词在同一个树分支下。
+
+```cpp
+class Trie {
+private:
+    vector<Trie*> children;
+    bool isEnd;
+
+    Trie* searchPrefix(string prefix) {
+        Trie* node = this;
+        for (char ch : prefix) {
+            ch -= 'a';
+            if (node->children[ch] == nullptr) {
+                return nullptr;
+            }
+            node = node->children[ch];
+        }
+        return node;
+    }
+
+public:
+    Trie() : children(26), isEnd(false) {}
+
+    void insert(string word) {
+        Trie* node = this;
+        for (char ch : word) {
+            ch -= 'a';
+            if (node->children[ch] == nullptr) {
+                node->children[ch] = new Trie();
+            }
+            node = node->children[ch];
+        }
+        node->isEnd = true;
+    }
+
+    bool search(string word) {
+        Trie* node = this->searchPrefix(word);
+        return node != nullptr && node->isEnd;
+    }
+
+    bool startsWith(string prefix) {
+        return this->searchPrefix(prefix) != nullptr;
+    }
+};
+
+// 作者：力扣官方题解
+// 链接：https://leetcode.cn/problems/implement-trie-prefix-tree/solutions/717239/shi-xian-trie-qian-zhui-shu-by-leetcode-ti500/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+```
+
+为了避免内存泄漏，还需要添加析构函数：
+
+```cpp
+    ~Trie() {
+        for (auto &child : this->children) {
+            if (child != nullptr) delete child;
+        }
+    }
+```
+该析构函数以递归形式删除该节点下的所有子节点。
+
+## 课程表[![](/icons/link.svg)](https://leetcode.cn/problems/course-schedule/description/?envType=study-plan-v2&envId=top-100-liked)
+
+**拓扑排序**: 对于图 $G$ 中的任意一条有向边 $(u,v)$，$u$在排列中都出现在 $v$的前面，可用于判断有向图中是否存在环。
+
+在课程表中，对于课程A的前置课程B，可认为存在一条由B指向A的有向边。
+
+本题可建模成在由课程关系组成的有向图中判断该有向图是否存在环。
+
+可通过寻找拓扑排序来判断是否存在环，如果存在拓扑排序，则表示该课程表可完成修读。
+
+- 深度优先搜索
+
+    我们正在使用DFS搜索该有向图：
+    1. 当到达一个节点后，表明当前节点可按照当前深度搜索的路径到达，只要前置节点都符合拓扑排序要求，前置搜索过的节点可标记为【搜索中】；
+    2. 当一条深度优先搜索路径到了末端，则表明该节点不会再往深处，造成有环指向该节点的情况，可将该末端节点标记为【已完成】；
+    3. 深度优先搜索回溯过程中，表明该节点的后续节点都为【已完成】，因此该回溯节点也可被标记成【已完成】；
+    4. 如果在搜索过程中碰到了【未搜索】的节点，则继续DFS；如果碰到了【搜索中】节点，则**表明碰到了环**，因为是从【搜索中】的节点一路DFS回到该节点的，还没有进行回溯；
+    5. 每次DFS选择一个未搜索过的节点进行，直到所有节点搜索过，判断是否碰到了环；
+
+```cpp
+class Solution {
+private:
+    vector<vector<int>> edges;
+    vector<int> visited;
+    bool valid = true;
+
+public:
+    void dfs(int u) {
+        visited[u] = 1;
+        for (int v: edges[u]) {
+            if (visited[v] == 0) {
+                dfs(v);
+                if (!valid) {
+                    return;
+                }
+            }
+            else if (visited[v] == 1) {
+                valid = false;
+                return;
+            }
+        }
+        visited[u] = 2;
+    }
+
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        edges.resize(numCourses);
+        visited.resize(numCourses);
+        for (const auto& info: prerequisites) {
+            edges[info[1]].push_back(info[0]);
+        }
+        for (int i = 0; i < numCourses && valid; ++i) {
+            if (!visited[i]) {
+                dfs(i);
+            }
+        }
+        return valid;
+    }
+};
+
+// 作者：力扣官方题解
+// 链接：https://leetcode.cn/problems/course-schedule/solutions/359392/ke-cheng-biao-by-leetcode-solution/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+```
+> **时间复杂度**：$O(n+m)$，其中 $n$ 为课程数，$m$ 为先修课程的要求数。这其实就是对图进行深度优先搜索的时间复杂度。
+>
+> **空间复杂度**：存储成邻接表的形式，空间复杂度为 $O(n+m)$，最大 $O(n)$的递归栈空间
+
+- 广度优先搜搜
+
+    采用广度优先搜索更像一种模拟选课的方法，更容易理解。
+
+    对于有向图中的节点，每个节点具有入度和出度属性。
+    当节点的入度 $indeg == 0$，则表示该节点已无前置节点，即课程的前置要求已经达到。
+    将所有入度为 0 的课程先修；
+    对于已修课程的邻居节点，可减少其入度，表示有一门前置课程已修。
+
+    直到所有可修的课程都修了之后，判断可修课程数是否等于总课程数。
+    若相等，则表明可修课程的顺序为一个拓扑排序；否则，表明有向图中存在环。
+
 
