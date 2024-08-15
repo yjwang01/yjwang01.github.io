@@ -96,3 +96,54 @@ To be added.
 > 时间复杂度：$O(2n)$
 >
 > 空间复杂度：$O(1)$
+
+## 模拟法
+
+### [螺旋矩阵II](https://leetcode.cn/problems/spiral-matrix-ii/)
+
+当生成旋转矩阵的时候，可将矩阵一圈一圈进行生成；
+进行每一圈生成的时候考虑以何种方式、以何种统一的规律去生成；
+
+注意到，当本圈的边具有 `n` 个元素的时候，本圈中共含有 `4*(n-1)` 个元素，
+那么只需要按照右下左上的顺序，每次生成 `n-1` 个元素即可。
+
+```cpp
+    vector<vector<int>> generateMatrix(int n)
+    {
+        vector<vector<int>> ans(n, vector<int>(n));
+
+        int start_x = 0, start_y = 0;   // 每一圈的起始位置
+        int num = 1;                    // 需要填的数字
+        while (n > 0)
+        {
+            int x = start_x, y = start_y;
+            // 当 n == 1 时的特殊情况，也意味着只有一个元素了
+            if (n == 1)
+            {
+                ans[x][y] = num++;
+                return ans;
+            }
+
+            for (int i = 0; i < n - 1; i++) // 右
+            {
+                ans[x][y++] = num++;
+            }
+            for (int i = 0; i < n - 1; i++) // 下
+            {
+                ans[x++][y] = num++;
+            }
+            for (int i = 0; i < n - 1; i++) // 左
+            {
+                ans[x][y--] = num++;
+            }
+            for (int i = 0; i < n - 1; i++) // 上
+            {
+                ans[x--][y] = num++;
+            }
+            start_x++;start_y++;    // 更新起始位置
+            n -= 2;                 // 一圈后 边长 -= 2
+        }
+        return ans;
+    }
+```
+
