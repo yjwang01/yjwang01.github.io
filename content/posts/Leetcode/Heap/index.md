@@ -5,7 +5,7 @@ date: 2024-07-29T11:48:01+08:00
 slug: 'leetcode-heap'
 tags: ['Leetcode', 'Heap']
 categories: ['Leetcode']
-image: 
+image: "img/default_image.jpg"
 math: false
 license: false
 # hidden: false

@@ -5,8 +5,8 @@ date: 2024-07-13T22:39:35+08:00
 slug: 'computer-networking'
 tags: ['Computer Networking', 'Learning']
 categories: ["学习记录"]
-# image: 'image path'
-math: false
+image: "https://raw.githubusercontent.com/yjwang01/img_bed/main/img/202408191609554.png"
+math: true
 license: false
 comments: true
 hasCJKLanguage: true

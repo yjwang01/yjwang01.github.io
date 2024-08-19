@@ -5,12 +5,12 @@ date: 2024-07-31T11:08:54+08:00
 slug: 'leetcode-dp'
 tags: ['Leetcode', 'DP']
 categories: ['Leetcode']
-# image: 'image path'
+image: "img/default_image.jpg"
 math: false
 license: false
 # hidden: false
 comments: true
-draft: false
+draft: true
 ---
 
 
