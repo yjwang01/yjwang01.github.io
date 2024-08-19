@@ -147,3 +147,53 @@ To be added.
     }
 ```
 
+> 时间复杂度：$O(n^2)$
+>
+> 空间复杂度：$O(1)$
+
+## 链表-虚拟头结点
+
+### [移除链表元素](https://leetcode.cn/problems/remove-linked-list-elements/description/)
+
+在删除链表元素`cur`时，
+需要将`cur`上一个的元素`pre`指向`cur`的下一个元素`next`;
+
+而对于头节点`head`来说，它没有上一个元素，
+因此可以新建一个`dummy`节点指向`head`，
+这样所有节点就可以使用同一套删除链表元素的逻辑进行处理，
+不需要对头节点专门判断。
+
+```cpp
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode *dummy = new ListNode(0, head);
+        ListNode* pre = dummy, *cur = head;
+
+        while (cur)
+        {
+            if (cur->val == val)
+            {
+                // 删除当前节点
+                ListNode* temp = cur;
+                cur = cur->next;
+                pre->next = cur;
+                delete temp;    // 释放元素堆内存
+            }
+            else
+            {
+                // 移动到下一个元素
+                pre = pre->next;
+                cur = cur->next;
+            }
+        }
+        head = dummy->next; // head可能被删除，因此需要使用dummy重新赋值
+        delete dummy;       // 释放元素堆内存
+        return head;
+    }
+```
+
+> 时间复杂度：$O(n)$
+>
+> 空间复杂度：$O(1)$
+>
+> 注意释放堆内存，避免内存泄漏
+

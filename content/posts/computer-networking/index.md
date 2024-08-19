@@ -3,7 +3,7 @@ title: "Computer Networking学习记录"
 description: '学习计算机网络时的笔记'
 date: 2024-07-13T22:39:35+08:00
 slug: 'computer-networking'
-tags: ['Computer Networking']
+tags: ['Computer Networking', 'Learning']
 categories: ["学习记录"]
 # image: 'image path'
 math: false
