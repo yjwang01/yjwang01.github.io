@@ -10,5 +10,5 @@ math: false
 license: false
 # hidden: false
 comments: true
-draft: true
+draft: false
 ---

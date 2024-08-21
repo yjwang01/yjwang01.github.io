@@ -7,7 +7,7 @@
 baseURL: 'https://yjwang01.github.io'
 languageCode: zh-cn
 title: "Yum's website"
-paginate: 5
+paginate: 10
 theme: 'hugo-theme-stack'
 copyright: Yum
 
