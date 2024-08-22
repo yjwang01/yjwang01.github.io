@@ -3,7 +3,7 @@ title: "Leetcode 做题方法汇总"
 description: 
 date: 2024-08-14T09:21:03+08:00
 slug: 'leetcode-summary'
-tags: ['Leetcode','Leetcode Summary']
+tags: ['Leetcode']
 categories: ['Leetcode']
 image: "img/default_image.jpg"
 math: false
@@ -13,13 +13,13 @@ comments: true
 draft: false
 ---
 
-## 双指针法
+# 双指针法
 
-### [移除元素](https://leetcode.cn/problems/remove-element/description/)
+## [移除元素](https://leetcode.cn/problems/remove-element/description/)
 
 To be added.
 
-### [有序数组的平方](https://leetcode.cn/problems/squares-of-a-sorted-array/description/)
+## [有序数组的平方](https://leetcode.cn/problems/squares-of-a-sorted-array/description/)
 
 由于是一个有序数组，则同为正数的和同为负数的nums的平方并不需要进行排列；需要考虑的是如何将两者合并起来，则类似与两个数组进行比较合并成一个数组，使用两个指针指向两个数组的一端，再进行比较合并。
 
@@ -60,11 +60,11 @@ To be added.
 >
 > 空间复杂度：$O(1)$，返回数组不算
 
-## 滑动窗口
+# 滑动窗口
 
 滑动串口算是双指针法的一种吧，但是双指针的移动更像一种窗口移动的感觉。
 
-### [长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/description/)
+## [长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/description/)
 
 因为全部都是正数，
 所以窗口扩大肯定会使得求和结果变大，
@@ -97,9 +97,9 @@ To be added.
 >
 > 空间复杂度：$O(1)$
 
-## 模拟法
+# 模拟法
 
-### [螺旋矩阵II](https://leetcode.cn/problems/spiral-matrix-ii/)
+## [螺旋矩阵II](https://leetcode.cn/problems/spiral-matrix-ii/)
 
 当生成旋转矩阵的时候，可将矩阵一圈一圈进行生成；
 进行每一圈生成的时候考虑以何种方式、以何种统一的规律去生成；
@@ -151,9 +151,9 @@ To be added.
 >
 > 空间复杂度：$O(1)$
 
-## 链表-虚拟头结点
+# 链表-虚拟头结点
 
-### [移除链表元素](https://leetcode.cn/problems/remove-linked-list-elements/description/)
+## [移除链表元素](https://leetcode.cn/problems/remove-linked-list-elements/description/)
 
 在删除链表元素`cur`时，
 需要将`cur`上一个的元素`pre`指向`cur`的下一个元素`next`;

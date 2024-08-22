@@ -2,6 +2,7 @@
 # https://stack.jimmycai.com/config/comments
 # https://hugo.opendocs.io/zh-cn/getting-started/directory-structure/
 # https://github.com/Oddyti/oddyti.github.io/blob/master/config.yaml
+# https://www.oddyti.com/
 
 # Change baseurl before deploy
 baseURL: 'https://yjwang01.github.io'
@@ -284,9 +285,9 @@ markup:
             ## Set to true if you have HTML content inside Markdown
             unsafe: true
     tableOfContents:
-        endLevel: 4
+        endLevel: 5
         ordered: true
-        startLevel: 2
+        startLevel: 1
     highlight:
         noClasses: false
         codeFences: true
