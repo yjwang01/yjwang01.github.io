@@ -5,6 +5,7 @@
 # https://www.oddyti.com/
 # https://zyxin.xyz/blog/tutorial/
 # https://stack-docs.netlify.app/zh/
+# https://matnoble.github.io/tech/hugo/shortcodes-practice-tutorial-for-hugo/
 
 # Change baseurl before deploy
 baseURL: 'https://yjwang01.github.io'
