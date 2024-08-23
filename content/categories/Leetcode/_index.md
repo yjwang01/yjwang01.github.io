@@ -4,6 +4,6 @@ description: "Leetcode category"
 slug: "leetcode"
 image: leetcode.jpg
 style:
-    background: "#2a9d8f"
+    background: "##EE9211"
     color: "#fff"
 ---

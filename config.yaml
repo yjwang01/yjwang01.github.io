@@ -3,6 +3,8 @@
 # https://hugo.opendocs.io/zh-cn/getting-started/directory-structure/
 # https://github.com/Oddyti/oddyti.github.io/blob/master/config.yaml
 # https://www.oddyti.com/
+# https://zyxin.xyz/blog/tutorial/
+# https://stack-docs.netlify.app/zh/
 
 # Change baseurl before deploy
 baseURL: 'https://yjwang01.github.io'

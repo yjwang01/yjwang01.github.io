@@ -5,7 +5,7 @@ date: 2024-08-21T15:33:36+08:00
 slug: 'cpp'
 tags: ['Cpp','Learning']
 categories: ['学习记录']
-image: 'img/default_image.jpg'
+image:
 math: false
 license: false
 # hidden: false
@@ -99,10 +99,6 @@ const int *p2;
 ### constexpr
 
 **常量表达式**： 值不会改变，并且在编译过程中就能得到计算结果的表达式。
-
-
-
-
 
 
 

@@ -5,7 +5,7 @@ date: 2024-08-14T09:21:03+08:00
 slug: 'leetcode-summary'
 tags: ['Leetcode']
 categories: ['Leetcode']
-image: "img/default_image.jpg"
+image: 
 math: false
 license: false
 # hidden: false

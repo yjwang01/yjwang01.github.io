@@ -4,7 +4,7 @@ description:
 date: 2024-08-19T09:04:16+08:00
 slug: 'VisualStudio-learning'
 tags: ['VisualStudio','Learning']
-categories: ["学习记录"]
+categories: ['学习记录']
 image: "img/default_image.jpg"
 math: false
 license: false

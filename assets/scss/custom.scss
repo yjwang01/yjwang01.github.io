@@ -1,0 +1,144 @@
+// // 使头像不是圆形而是圆角矩形
+// .sidebar header .site-avatar .site-logo {
+//     border-radius: 10%;
+// }
+
+// 自定义字体
+@import url("https://cdn.jsdelivr.net/npm/noto-serif-sc@22.0.0/all.css");
+@import url("https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/style.css"); /*
+   参见https://github.com/lxgw/LxgwWenKai/issues/24 */
+:root {
+    --zh-font-family: "LXGW WenKai Screen", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
+    --article-font-family: "Noto Serif SC", var(--base-font-family);
+}
+
+// 自定义配色
+:root[data-scheme="light"] {
+    --accent-color: #1a5086; // 主题色
+    --accent-color-darker: #2c3e50; // 主题色2（深色）
+
+    --body-text-color: #707070; // 页面字体颜色
+    --card-text-color-main: #34495e; // 卡片字体颜色
+    --card-text-color-tertiary: #767676; // 副卡片字体颜色
+    --code-background-color: #f3f7edb7; // 行内代码背景色
+    --code-text-color: #e96900; // 行内代码前景色
+    --blockquote-background-color: #b9ebea4d; // 引用块背景颜色
+    --tr-even-background-color: #eff0fa54 !important; // 表格配色样式
+
+    --selection-text-color: #333; // 选区前景色
+    --selection-background-color: #b3b5b8; // 选区背景色
+}
+:root[data-scheme="dark"] { // 暗黑模式下的配色
+
+    --accent-color: #73d3eb;
+    --accent-color-darker: #539aac;
+
+    --blockquote-background-color: #313f5645;
+    --body-background: #111; // 整页背景配色
+    --card-background: #191d24; // 卡片配色
+    --tr-even-background-color: #1e242ecf !important;
+    --code-background-color: #360d0d;
+    --code-text-color: #e96900;
+
+    --selection-text-color: #fff;
+    --selection-background-color: #34495e;
+
+    $panel-bg: #323a47;
+    $panel-title: #555;
+    --panel-background-color: #{$panel-bg};
+    --panel-titlebar-color: #{$panel-title};
+    --panel-hover-color: #{mix($panel-bg, $panel-title, 50%)};
+
+}
+
+// // 调整列表缩进和编号
+// .article-content {
+//     // 中文编号
+//     ol:lang(zh-cn) {
+//         // 一级序号
+//         list-style: simp-chinese-informal;
+
+//         // 二级序号
+//         ol {
+//             list-style-type: none;
+//             counter-reset: sectioncounter;
+    
+//             li:before {
+//                 content: "(" counter(sectioncounter, simp-chinese-informal) ") ";
+//                 counter-increment: sectioncounter;
+//                 color: var(--accent-color);
+//                 margin-left: -32px;
+//             }
+//         }
+
+//         // 三级序号
+//         ol ol {
+//             list-style: decimal;
+
+//             li:before {
+//                 content: "";
+//                 margin-left: 0px;
+//             }
+//         }
+//     }
+
+//     // 英文编号
+//     ol:lang(en), ul:lang(en) {
+//         padding-inline-start: 32px;
+//     }
+
+//     li::marker {
+//         color: var(--accent-color);
+//         font-weight: bold;
+//     }
+
+//     // 脚注编号
+//     .footnotes ol {
+//         list-style: decimal;
+//     }
+
+//     // 清除目录内的编号
+//     #TableOfContents-inline {
+//         ol:lang(zh-cn) ol li:before {
+//             content: "";
+//             margin-left: 0;
+//         }
+//     }
+// }
+
+// 调整引用间距
+.article-content blockquote {
+    :first-child {
+        margin-top: 0px;
+    }
+    :last-child {
+        margin-bottom: 0px;
+    }
+}
+
+// 右侧归档数字斜体
+.widget.archives .archives-year a span.count {
+    font-style: italic;
+}
+
+// 双栏样式
+// @media (min-width: 1024px) {
+//     .article-list--compact.links {
+//         display: grid;
+//         grid-template-columns: 1fr 1fr ;
+//         background: none;
+//         box-shadow: none;
+        
+//         article {
+//             background: var(--card-background);
+//             border: none;
+//             box-shadow: var(--shadow-l2);
+//             // margin-right: 8px;
+//             margin-bottom: 8px;
+//             border-radius: var(--card-border-radius);
+//             &:nth-child(odd) {
+//                 margin-right: 8px;
+//             }
+//         }
+//     }
+// }

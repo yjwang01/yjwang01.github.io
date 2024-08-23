@@ -1,5 +1,5 @@
 ---
-title: "Computer Networking学习记录"
+title: "Computer Networking"
 description: '学习计算机网络时的笔记'
 date: 2024-07-13T22:39:35+08:00
 slug: 'computer-networking'

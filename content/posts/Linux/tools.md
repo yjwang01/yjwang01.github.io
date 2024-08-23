@@ -5,7 +5,7 @@ date: 2024-08-21T14:14:10+08:00
 slug: 'linux-tools'
 tags: ['Linux','Learning']
 categories: ['学习记录', 'Linux']
-image: 'img/default_image.jpg'
+image: 
 math: false
 license: false
 hidden: false
@@ -29,7 +29,8 @@ draft: false
 
 
 ## REF
-[Tmux使用教程](https://www.ruanyifeng.com/blog/2019/10/tmux.html)
+
+1. [Tmux使用教程](https://www.ruanyifeng.com/blog/2019/10/tmux.html)
 
 # Vim
 
