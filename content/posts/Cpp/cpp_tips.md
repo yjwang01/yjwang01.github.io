@@ -167,9 +167,7 @@ GPIO_Inilize(GPIO_P3, &GPIO_InitStructure); //初始化
 但是因为`CONTACT(P, 3)`是作为实参传入的，因此将被优先展开，
 而在前面的宏定义`#define LED_ON(port, pin)   CONTACT(CONTACT(P, port), pin) = 1`中，第一个`CONTACT(a, b)`将优先被展开，遇到了`##`阻止了中间的`CONTACT(P, 3)`的展开。
 
-# c与cpp混用
-
-## calloc
+# calloc 与 STL
 
 当一个结构体中具有一个`std::map`类型的变量，
 在使用`calloc()`等函数分配内存时，
@@ -196,3 +194,19 @@ vnrs_status_ptr[0].sn_2_vn_node[5] = 0;
 vnr_status* vnrs_status_ptr = new vnr_status[2];
 vnrs_status_ptr[0].sn_2_vn_node[5] = 0;
 ```
+
+# std::map等STL函数的初始化
+
+```cpp
+typedef struct _recv_stat_items{
+	int pk_recv;
+	double pk_delay_ete;
+	_recv_stat_items() : pk_recv(0), pk_delay_ete(0.0) {}
+}recv_stat_items;
+
+std::map<int, recv_stat_items> vn_recv_stat_src_dist;	// vn src, ´Ósn_2_vn_nodeÕÒµ½Î¨Ò»vn src
+```
+假设我有如上定义的`std::map`；
+使用 std::map 时，如果你通过 `[]` 操作符访问一个不存在的键（例如 `map[key]`），
+它会自动调用键对应的值类型的默认构造函数来插入一个新的元素；
+由于`recv_stat_items`不是内置类型，因此需要手动提供一个构造函数用于初始化，否则将会**出错**。
