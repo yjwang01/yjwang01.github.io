@@ -24,7 +24,7 @@ draft: false
 
 ```cpp
 int a = 0;
-int a = {0}；
+int a = {0};
 int a{0};   // 列表初始化
 int a(0);
 ```

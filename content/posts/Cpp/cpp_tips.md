@@ -166,3 +166,33 @@ GPIO_Inilize(GPIO_P3, &GPIO_InitStructure); //初始化
 可以看到上述过程中，第4步得到的结果和前面的宏定义的有一步是非常像的，
 但是因为`CONTACT(P, 3)`是作为实参传入的，因此将被优先展开，
 而在前面的宏定义`#define LED_ON(port, pin)   CONTACT(CONTACT(P, port), pin) = 1`中，第一个`CONTACT(a, b)`将优先被展开，遇到了`##`阻止了中间的`CONTACT(P, 3)`的展开。
+
+# c与cpp混用
+
+## calloc
+
+当一个结构体中具有一个`std::map`类型的变量，
+在使用`calloc()`等函数分配内存时，
+不会调用`std::map`的构造函数来初始化该变量，
+则对`std::map`的操作将报错。
+
+```cpp
+typedef struct {
+    std::map<int, int> sn_2_vn_node;
+} vnr_status;
+
+/* 1. 出错，因为map成员未初始化 */
+vnr_status* vnrs_status_ptr = (vnr_status*)calloc(2, sizeof(vnr_status));
+vnrs_status_ptr[0].sn_2_vn_node[5] = 0;
+
+/* 2. 成功 */
+vnr_status* vnrs_status_ptr = (vnr_status*)calloc(2, sizeof(vnr_status));
+// Initialize the std::map for each vnr_status
+new (&vnrs_status_ptr[0].sn_2_vn_node) std::map<int, int>();
+new (&vnrs_status_ptr[1].sn_2_vn_node) std::map<int, int>();
+vnrs_status_ptr[0].sn_2_vn_node[5] = 0;
+
+/* 3. 成功 */
+vnr_status* vnrs_status_ptr = new vnr_status[2];
+vnrs_status_ptr[0].sn_2_vn_node[5] = 0;
+```
