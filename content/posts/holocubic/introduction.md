@@ -1,6 +1,6 @@
 ---
 title: "Holocubic的说明书"
-description: 
+description: 本文为浙江大学智能所礼物交换活动的整理版说明书
 date: 2024-12-13T22:33:04+08:00
 slug: 'holocubic_intro'
 tags: ['Holocubic']
@@ -8,7 +8,7 @@ categories: ['']
 # image: 'img/default_image.jpg'
 math: false
 license: false
-hidden: false
+hidden: true
 comments: true
 hasCJKLanguage: true
 draft: false
@@ -20,18 +20,19 @@ draft: false
 
 [Holocubic ](https://www.bilibili.com/video/BV1VA411p7MD/?spm_id_from=333.1387.upload.video_card.click&vd_source=aa40e7ad8ca9111af678a8e83c635927)最初是由 B站 up 主[稚晖君](https://space.bilibili.com/20259914)开发的一款集成了网络功能的伪全息透明显示桌面站，使用了一个分光棱镜来设计出伪全息显示的效果，因为搭载了 WiFi 和蓝牙能力可以实现很多网络应用。
 
-视频经发布后，就引起了很多网友的复刻，当初我也进行了复刻；后续在众多网友为爱发电下，修复了初版设计的一些问题，并且 Holocubic 的功能越来越丰富。
+视频经发布后，就引起了很多网友的复刻，当初我也进行了[复刻](https://www.bilibili.com/video/BV1Pf4y1P7LU/?spm_id_from=333.1387.upload.video_card.click&vd_source=aa40e7ad8ca9111af678a8e83c635927)；后续在众多网友为爱发电下，修复了初版设计的一些问题，并且 Holocubic 的功能越来越丰富。
 
 ## 硬件介绍
 
 Holocubic 由主板和屏幕板两个PCB组成，配有外壳和分光棱镜，支持插入TF卡实现更多的功能。
 
+屏幕的分辨率为240 * 240 像素。
+
 本版本的 Holocubic 的主板未添加供电模块，由屏幕版上的 DC-DC 电路进行供电，因此无法单独测试使用主板。
 
 # Holocubic 使用手册
 
-该 Holocubic 使用的是改进后的硬件版本，固件由 [ClimbSnail](https://github.com/ClimbSnail/HoloCubic_AIO) 及其他更多开发人员共同开发，并由我进行了一定的修改，删除部分不必要的功能以及某些功能。
-
+该 Holocubic 使用的是改进后的硬件版本，固件由 [ClimbSnail](https://github.com/ClimbSnail/HoloCubic_AIO) 及其他更多开发人员共同开发，并由我进行了一定的修改。
 下面将介绍基于 Holocubic_AIO 固件框架的使用方式。
 
 ## 开机注意事项
@@ -54,27 +55,30 @@ Holocubic 使用陀螺仪加速度计进行动作的输入，主要包括**上�
 1. 运行 APP 条件：无。
 2. 启用后，会显示`Web Sever Start`。小电视开启AP模式，建立在`AP_IP`上（屏幕的服务界面有标注），AP模式的热点名为`HoloCubic_AIO`，无密码。
 3. **初次使用时**需要使用电脑连接 Holocubic 建立的名称为`HoloCubic_AIO`的热点，无密码。
-4. 在浏览器地址栏输入`Local_IP`（http://192.168.4.2，也支持域名直接访问 http://holocubic ），即可进入管理设置后台。
-5. 在配置好 WiFi 信息，且 Holocubic 成功连接 WiFi 后，可使用连接同一个 WiFi 的电脑访问该`IP`地址再次进行设置。
+4. 在浏览器地址栏输入`AP_IP`（[http://192.168.4.2](http://192.168.4.2)，也支持域名直接访问 [http://holocubic](http://holocubic) ），即可进入管理设置后台。
+5. 在配置好 WiFi 信息，且 Holocubic 成功连接 WiFi 后，可使用连接同一个 WiFi 的电脑访问由WiFi设备自动分配的`IP`地址（屏幕第二行的地址）再次进行设置。
 
-注：<font color=red>由于芯片的限制，Holocubic仅支持2.4G的WiFi，不支持5G及混合频段的WiFi，可用手机开一个热点使用</font>
+注：<font color=red>由于芯片的限制，Holocubic仅支持2.4G的WiFi，不支持5G及混合频段的WiFi，可用手机开一个热点使用。
+使用Web Server上的`上传文件`选项，默认将文件上传至`image`文件夹。</font>
 
 ### 文件管理器（File Manager）
 
-通过无线网络管理内存卡上的文件。
+通过无线网络管理内存卡上的文件。<font color=red> 可惜作者说现在这个功能不能用</font>
 
 1. 运行 APP 条件：必须是已经正常配置 WiFi，必须插 TF卡。为避免WiFi连接时，功率不够导致重启，请确保USB口供电充足。
 2. 进入`Holocubic`文件管理器后会自动连接已配置的 WiFi，并显示出`IP`地址。
-3. 
+3. 使用Windows文件管理器，在地址栏输入`ftp://holocubic:aio@xxx.xxx.xxx.xxx`,其中`xxx.xxx.xxx.xxx`为屏幕上显示的`IP`地址。
+
+注：<font color=red> 作者后续可能会集成该功能到上位机，请关注该作者[Github主页](https://github.com/ClimbSnail/HoloCubic_AIO)，也可能直接放弃该功能了，主要是因为过去一些版本不好取出 TF 卡，现在经优化后，TF卡很容易取出来，使用读卡器编辑内容，并且相册图片的上传可通过`Web Server`实现。</font>
 
 ### 相册（Picture）
 
-1. 运行APP条件：必须插内存卡，内存卡的根目录下必须存在`image/`目录（也可以使用`Web Server服务`APP 通过浏览器上传照片），`image/`目录下必须要有图片文件（`jpg`或者`bin`）。
+1. 运行APP条件：必须插内存卡，内存卡的根目存在`image/`目录（也可以使用`Web Server服务`APP 通过浏览器上传照片），`image/`目录下必须要有图片文件（`jpg`或者`bin`）。
 2. 将需要播放的图片转化成一定格式（`.jpg`或`.bin`），再保存在`image/`目录中，图片文件名必须为英文字符或数字（但不能以数字开头）。
 3. 进入 APP 后，左右摇晃进行图片切换。
 4. `Web Server`的网页端可以进行附加功能的设置。
 
-注：<font color=red> 由于 Holocubic 使用的是1：1尺寸的屏幕，建议将需要显示的图片进行转换。关于图片转换，见本文后续说明</font>
+注：<font color=red> 由于 Holocubic 使用的是1：1尺寸的屏幕，建议将需要显示的图片进行转换。关于图片转换，见上位机说明。</font>
 
 ### 视频播放（Media）
 
@@ -92,13 +96,13 @@ Holocubic 使用陀螺仪加速度计进行动作的输入，主要包括**上�
 
 ### 天气、时钟（Weather）
 
-在原本的 Holocubic_AIO 框架中，有两款天气时钟的APP，此处仅保留了一款。
+在原本的 Holocubic_AIO 框架中，有两款天气时钟的APP，仅保留了新款天气。
 
 1. 运行APP条件：必须是已经联网状态。
 2. 由`PuYuuu`模仿了`misaka`的时钟界面，使用高德天气API。
 3. 使用天气时钟，需要在`Web Server`网页服务中修改`城市名（精准的城市代码）`、`API的个人Key`。（城市代码的参考编码表 https://lbs.amap.com/api/webservice/download ，key的获取方法 https://lbs.amap.com/api/webservice/create-project-and-key ）
 
-注：<font color=red>即使断网后，时钟也依旧运行。（开机最好连接wifi，这样会自动同步时钟。使用中会间歇尝试同步时钟）</font>
+注：<font color=red>即使断网后，时钟也依旧运行。（开机最好连接wifi，这样会自动同步时钟。使用中会间歇尝试同步时钟）；已使用本人账号添加API Key，如遇问题，可自行注册账号添加。</font>
 
 ### 特效动画（Idea）
 
@@ -132,7 +136,7 @@ Holocubic 使用陀螺仪加速度计进行动作的输入，主要包括**上�
 2. 第一次使用之前，要先在`Web Server `APP 的网页上填写配置。role可以选择0和1，分别代表互动的两个HoloCubic。client_id为设备的唯一标识，这里请将这两个Holocubic设置成同一个QQ号。mqtt_server填写自己的mqtt服务器地址,port填写端口号。用户名以及密码根据具体的服务器配置而定。
 3. 设置完心跳APP之后，开机自动联网，并开启mqtt客户端。收到另一个HoloCubic的消息之后自动进入APP。正常方式进入APP则自动向另一个HoloCubic发送消息。
 
-注：<font color=red> 俺手上也没有两个Holocubic，呜呜</font>
+注：<font color=red> 俺手上也没有两个Holocubic，呜呜；经测试发现该APP容易卡死。</font>
 
 ### PC资源监控(PC Resource)
 
@@ -201,5 +205,5 @@ APP演示视频：[【LVGL菜单#透明小电视#LVGL开发】 ](https://www.bil
 
 注：<font color=red>本文仅作为本礼物的快速说明，更细节的相关文档包括源代码可进入 `ClimbSnail` 的github仓库中获取。</font>
 
-3. 此处添加一个收集到的资源合集的获取链接 【】
+收集到的资源合集的获取链接：[百度网盘链接](https://pan.baidu.com/s/1he2WDS_XtG3xiq8gQl26YQ?pwd=0ubk) 提取码：0ubk
 
